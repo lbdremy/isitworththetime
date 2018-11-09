@@ -52,8 +52,17 @@ function App() {
   ];
 
   const time = taskDuration * taskFrequency * timeUsefulness * 1000;
-  const extraTime = time % (24 * 3600 * 1000);
-  const time8WorkingHours = ((time - extraTime) * 3) + extraTime;
+  const unitMeasures = {
+    y: 260 * 24 * 3600 * 1000,
+    mo: 21 * 24 * 3600 * 1000,
+    w: 5 * 24 * 3600 * 1000,
+    d: 8 * 3600 * 1000,
+    h: 3600 * 1000,
+    m: 60 * 1000,
+    s: 1000
+  };
+  const normalWorkHours = humanizeDuration(time, { unitMeasures, round: true });
+  const inhumaneWorkHours = humanizeDuration(time, { round: true });
   return (
     <Container>
       <Header as="h1">Is It Worth the Time (of your favorite developer :P)?</Header>
@@ -95,7 +104,8 @@ function App() {
         {time ?
           (
             <Message positive>
-              <Message.Header>You have {humanizeDuration(time)} (or {humanizeDuration(time8WorkingHours)} considering 8 hours working day) to automate this task more time is not worth it!</Message.Header>
+              <Message.Header>You have {normalWorkHours} to automate this task more time is not worth it!</Message.Header>
+              {normalWorkHours !== inhumaneWorkHours && `or ${inhumaneWorkHours} if you work 24/7 every day good luck!`}
             </Message>
           )
           : (
@@ -107,7 +117,13 @@ function App() {
       </Form>
       <Divider/>
       <Message warning>
-        <Message.Header>Notes:</Message.Header> 1 year is 260 working days not 365 days.
+        <Message.Header>N.B:</Message.Header>
+        <ul>
+          <li>1 year is 260 days of work not 365 days</li>
+          <li>1 month is 21 days of work not 30 days</li>
+          <li>1 week is 5 days of work not 7 days</li>
+          <li>1 day is 8 hours work not 24 hours</li>
+        </ul>
       </Message>
       <Divider/>
       <Header as="h3">Interactive version of the famous comic from <a href="https://xkcd.com/1205/">xkcd</a> :D</Header>
