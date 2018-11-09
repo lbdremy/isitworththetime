@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Dropdown, Message, Container, Header, Image, Divider, Loader } from 'semantic-ui-react';
+import { Form, Dropdown, Message, Container, Header, Image, Divider } from 'semantic-ui-react';
 import humanizeDuration from 'humanize-duration';
 import 'semantic-ui-css/semantic.min.css';
 
@@ -30,10 +30,10 @@ function App() {
     { text: '5 years', value: 5 }
   ];
   const taskFrequencyOptions = [
-    { text: '50 times a day', value: 50 * 365 },
-    { text: '10 times a day', value: 10 * 365 },
-    { text: '5 times a day', value: 5 * 365 },
-    { text: 'daily', value: 365 },
+    { text: '50 times a day', value: 50 * 260 },
+    { text: '10 times a day', value: 10 * 260 },
+    { text: '5 times a day', value: 5 * 260 },
+    { text: 'daily', value: 260 },
     { text: 'weekly', value: 52 },
     { text: 'monthly', value: 12 },
     { text: 'yearly', value: 1 },
@@ -53,7 +53,7 @@ function App() {
   return (
     <Container>
       <Header as="h1">Is It Worth the Time (of your favorite developer :P)?</Header>
-      <Header as="h3">This form will tell you how long you can work on automating a routine task more efficient before you're spending more time than you save.</Header>
+      <Header as="h3">This form will tell you how long you can work on automating a routine task before you're spending more time than you save.</Header>
       <Form>
         <Form.Field>
           <label>How long this task will be useful?</label>
@@ -91,12 +91,20 @@ function App() {
         {time ?
           (
             <Message positive>
-              <Message.Header>You have {humanizeDuration(time * 1000)} to automate this task more time is not worth it!</Message.Header>
+              <Message.Header>You have {humanizeDuration(time * 1000)} (or {humanizeDuration(time * 1000 * 3)} considering 8 hours working day) to automate this task more time is not worth it!</Message.Header>
             </Message>
           )
-          : <Loader active inline='centered'>Fill in the form to get an anwser!</Loader>
+          : (
+            <Message information>
+              <Message.Header>Fill in the form to get an anwser!</Message.Header>
+            </Message>
+          )
         }
       </Form>
+      <Divider/>
+      <Message warning>
+        <Message.Header>Notes:</Message.Header> 1 year is 260 working days not 365 days.
+      </Message>
       <Divider/>
       <Header as="h3">Interactive version of the famous comic from <a href="https://xkcd.com/1205/">xkcd</a> :D</Header>
       <Image src="https://imgs.xkcd.com/comics/is_it_worth_the_time.png" size="large" centered/>
