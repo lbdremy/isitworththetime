@@ -22,6 +22,8 @@ function App() {
   const [taskDuration, setTaskDuration] = useSelectField();
 
   const timeUsefulnessOptions = [
+    { text: '1 month', value: 1/12 },
+    { text: '3 months', value: 3/12 },
     { text: '6 months', value: 0.5 },
     { text: '1 year', value: 1 },
     { text: '2 years', value: 2 },
@@ -49,7 +51,9 @@ function App() {
     { text: '6 hour', value: 6 * 3600 }
   ];
 
-  const time = taskDuration * taskFrequency * timeUsefulness;
+  const time = taskDuration * taskFrequency * timeUsefulness * 1000;
+  const extraTime = time % (24 * 3600 * 1000);
+  const time8WorkingHours = ((time - extraTime) * 3) + extraTime;
   return (
     <Container>
       <Header as="h1">Is It Worth the Time (of your favorite developer :P)?</Header>
@@ -91,11 +95,11 @@ function App() {
         {time ?
           (
             <Message positive>
-              <Message.Header>You have {humanizeDuration(time * 1000)} (or {humanizeDuration(time * 1000 * 3)} considering 8 hours working day) to automate this task more time is not worth it!</Message.Header>
+              <Message.Header>You have {humanizeDuration(time)} (or {humanizeDuration(time8WorkingHours)} considering 8 hours working day) to automate this task more time is not worth it!</Message.Header>
             </Message>
           )
           : (
-            <Message information>
+            <Message info>
               <Message.Header>Fill in the form to get an anwser!</Message.Header>
             </Message>
           )
