@@ -1,7 +1,7 @@
 {
   "main.css": "/isitworththetime/static/css/main.72167113.chunk.css",
-  "main.js": "/isitworththetime/static/js/main.d7e1d4de.chunk.js",
-  "main.js.map": "/isitworththetime/static/js/main.d7e1d4de.chunk.js.map",
+  "main.js": "/isitworththetime/static/js/main.8afaf1e6.chunk.js",
+  "main.js.map": "/isitworththetime/static/js/main.8afaf1e6.chunk.js.map",
   "static/css/1.efa362ce.chunk.css": "/isitworththetime/static/css/1.efa362ce.chunk.css",
   "static/js/1.dfc33297.chunk.js": "/isitworththetime/static/js/1.dfc33297.chunk.js",
   "static/js/1.dfc33297.chunk.js.map": "/isitworththetime/static/js/1.dfc33297.chunk.js.map",
@@ -11,6 +11,6 @@
   "static/css/main.72167113.chunk.css.map": "/isitworththetime/static/css/main.72167113.chunk.css.map",
   "static/css/1.efa362ce.chunk.css.map": "/isitworththetime/static/css/1.efa362ce.chunk.css.map",
   "index.html": "/isitworththetime/index.html",
-  "precache-manifest.2d7bca97cb77abac895b7c4feec0fade.js": "/isitworththetime/precache-manifest.2d7bca97cb77abac895b7c4feec0fade.js",
+  "precache-manifest.4a08034fc7f2162e0e577fa1308c2c19.js": "/isitworththetime/precache-manifest.4a08034fc7f2162e0e577fa1308c2c19.js",
   "service-worker.js": "/isitworththetime/service-worker.js"
 }
